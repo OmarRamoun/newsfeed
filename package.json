@@ -29,6 +29,7 @@
     "@react-navigation/native-stack": "^6.9.13",
     "@reduxjs/toolkit": "^1.8.0",
     "@shopify/flash-list": "^1.6.1",
+    "formik": "^2.4.4",
     "metro-config": "^0.79.0",
     "react": "18.2.0",
     "react-native": "0.72.4",
@@ -41,7 +42,8 @@
     "redux-persist": "^6.0.0",
     "styled-components": "^5.3.6",
     "styled-system": "^5.1.5",
-    "uuid": "^9.0.1"
+    "uuid": "^9.0.1",
+    "yup": "^1.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
@@ -103,6 +105,8 @@
   },
   "resolutions": {
     "@types/react": "18.2.0",
+    "**/yup": "0.27.0",
+    "**/@types/yup": "0.29.8",
     "styled-components": "^5",
     "**/eslint": "7.11.0"
   },
