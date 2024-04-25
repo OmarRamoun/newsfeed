@@ -1,31 +1,35 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 
-const App = () => {
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {Provider} from 'react-redux';
+import {PersistGate} from 'redux-persist/integration/react';
+
+import {SafeArea, StatusBar} from '@components';
+import {persistor, store} from '@state/store';
+import {ThemeProvider} from '@styles';
+
+import {AppStack} from './stacks/app';
+
+function App(): JSX.Element {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Welcome to React Native!</Text>
-      <Text style={styles.subtitle}>This is a basic starter project.</Text>
-    </View>
+    <SafeAreaProvider>
+      <ThemeProvider>
+        <Provider store={store}>
+          <PersistGate persistor={persistor} loading={null}>
+            <AppInner />
+          </PersistGate>
+        </Provider>
+      </ThemeProvider>
+    </SafeAreaProvider>
   );
-};
+}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff',
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
-  },
-  subtitle: {
-    fontSize: 18,
-    color: '#888',
-  },
-});
+const AppInner = () => (
+  <SafeArea>
+    <StatusBar showHideTransition="slide" animated />
 
-export default App;
+    <AppStack />
+  </SafeArea>
+);
+
+export {App};
